@@ -2,3 +2,6 @@ Flask
 gunicorn
 Flask-RESTful
 flask-restful
+numpy
+scipy
+matplotlib
