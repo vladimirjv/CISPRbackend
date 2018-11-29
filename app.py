@@ -37,4 +37,4 @@ api.add_resource(TestArray,'/test')
 # api.add_resource(Compensar, '/compensacion')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
