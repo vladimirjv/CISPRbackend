@@ -4,4 +4,4 @@ Flask-RESTful
 flask-restful
 numpy
 scipy
-matplotlib
+pandas
