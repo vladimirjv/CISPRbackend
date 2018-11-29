@@ -1,10 +1,11 @@
+import numpy as np
 import pandas as pd
 
-camaraSemiFar = pd.read_csv("TEST-SEMI-COMBO-FAR.csv", delimiter=',')
-camaraSemiClose = pd.read_csv("TEST-SEMI-COMBO-CLOSE.csv", delimiter=',')
-camaraSemiMiddle = pd.read_csv("TEST-SEMI-COMBO-MIDDLE.csv", delimiter=',')
+camaraSemiFar = pd.read_csv("SEMI-COMBO-FAR", delimiter=',')
+camaraSemiClose = pd.read_csv("SEMI-COMBO-CLOSE", delimiter=',')
+camaraSemiMiddle = pd.read_csv("SEMI-COMBO-MIDDLE.csv", delimiter=',')
 
-camaraBlindFar = pd.read_csv("TEST-SEMI-COMBO-CLOSE.csv", delimiter=',')
+camaraBlindFar = pd.read_csv("SEMI-COMBO-FAR.csv", delimiter=',')
 
 '''
 Todos los datos están medidos en dBuV
