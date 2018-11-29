@@ -18,7 +18,7 @@ xp = np.linspace(30, 300, 2700)
 interpolPk1 = interp1d(frq1, pk1)
 interpolPk2 = interp1d(frq2, pk2)
 
-bsPk = interpolPk1(xp) - interpolPk2(xp)
+bsPk = interpolPk1(xp) - interpolPk2(xp)#
 sbPk = interpolPk2(xp) - interpolPk1(xp)
 #para calcular las compensaciónes reales
 compensacionBSPk = interp1d(xp, bsPk)
@@ -40,3 +40,8 @@ def EvaluarBS(Freq=[],Pk=[],Qp=[],Av=[]):
     compensacionPk = (compensacionBSPk(freq)).tolist()
     return compensacionPk
 
+def PromedioSim(Frq=[], Pk=[]):
+    total = np.sum(interpolPk1(Frq))
+    val = np.sum(Pk)
+    promedio = (100-np.absolute(((total-val)/total)*100))
+    return promedio
