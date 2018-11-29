@@ -1,12 +1,42 @@
 import pandas as pd
 
-camaraSemiFar = pd.read_csv("TEST-COMBO-FAR.csv", delimiter=',')
-camara2 = pd.read_csv("TEST-COMBO-CLOSE.csv", delimiter=',')
-pk1 = (camaraSemiFar['PEAK AMPL']).values
-pk2 = (camara2['PEAK AMPL']).values
-qp1 = (camaraSemiFar['QPD AMPL']).values
-qp2 = (camara2['QPD AMPL']).values
-avg1 = (camaraSemiFar['EAVG AMPL']).values
-avg2 = (camara2['EAVG AMPL']).values
-frq1 = (camaraSemiFar['FREQ']/1000000).values
-frq2 = (camara2['FREQ']/1000000).values
+camaraSemiFar = pd.read_csv("TEST-SEMI-COMBO-FAR.csv", delimiter=',')
+camaraSemiClose = pd.read_csv("TEST-SEMI-COMBO-CLOSE.csv", delimiter=',')
+camaraSemiMiddle = pd.read_csv("TEST-SEMI-COMBO-MIDDLE.csv", delimiter=',')
+
+camaraBlindFar = pd.read_csv("TEST-SEMI-COMBO-CLOSE.csv", delimiter=',')
+
+'''
+Todos los datos están medidos en dBuV
+
+Los valores de Pico (Pk) medidos estaran en "pk[camara][posición]"
+Los valores de Quasi-Pico (Qp) estarán en las variables "qp[cámara][posición]" 
+Los valores de Average (Avg) estarán en  las variables "avg[cámara][posición]"
+
+La frecuencia estará dada en MHz y será guardada en las variables "frq[cámara][posición]"
+'''
+##Camara semianecoica
+#Far
+pkSemiFar = (camaraSemiFar['PEAK AMPL']).values
+qpSemiFar = (camaraSemiFar['QPD AMPL']).values
+avgSemiFar = (camaraSemiFar['EAVG AMPL']).values
+frqSemiFar = (camaraSemiFar['FREQ']/1000000).values
+#Middle
+pkSemiMiddle = (camaraSemiMiddle['PEAK AMPL']).values
+qpSemiMiddle = (camaraSemiMiddle['QPD AMPL']).values
+avgSemiMiddle = (camaraSemiMiddle['EAVG AMPL']).values
+frqSemiMiddle = (camaraSemiMiddle['FREQ']/1000000).values
+#Close
+pkSemiClose = (camaraSemiClose['PEAK AMPL']).values
+qpSemiClose = (camaraSemiClose['QPD AMPL']).values
+avgSemiClose = (camaraSemiClose['EAVG AMPL']).values
+frqSemiClose = (camaraSemiClose['FREQ']/1000000).values
+
+##Camara bindada
+#Far
+pkBlindFar = (camaraBlindFar['PEAK AMPL']).values
+qpBlindFar = (camaraBlindFar['QPD AMPL']).values
+avgBlindFar = (camaraBlindFar['EAVG AMPL']).values
+frqBlindFar = (camaraBlindFar['FREQ']/1000000).values
+#Middle
+#Close
