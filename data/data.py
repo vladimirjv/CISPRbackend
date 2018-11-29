@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
 
-camaraSemiFar = pd.read_csv("SEMI-COMBO-FAR", delimiter=',')
-camaraSemiClose = pd.read_csv("SEMI-COMBO-CLOSE", delimiter=',')
-camaraSemiMiddle = pd.read_csv("SEMI-COMBO-MIDDLE.csv", delimiter=',')
+camaraSemiFar = pd.read_csv("SemiFar.csv", delimiter=',')
+camaraSemiClose = pd.read_csv("SemiClose.csv", delimiter=',')
+camaraSemiMiddle = pd.read_csv("SemiMiddle.csv", delimiter=',')
 
-camaraBlindFar = pd.read_csv("SEMI-COMBO-FAR.csv", delimiter=',')
+camaraBlindFar = pd.read_csv("SemiFar.csv", delimiter=',')
 
 '''
 Todos los datos están medidos en dBuV
@@ -41,3 +41,4 @@ avgBlindFar = (camaraBlindFar['EAVG AMPL']).values
 frqBlindFar = (camaraBlindFar['FREQ']/1000000).values
 #Middle
 #Close
+print(pkBlindFar)
