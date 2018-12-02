@@ -5,3 +5,4 @@ flask-restful
 numpy
 scipy
 pandas
+flask-cors
