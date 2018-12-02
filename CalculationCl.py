@@ -7,6 +7,7 @@ from dataBinding import Data
 class MyMath():
 
     xp = np.linspace(30, 300, 2700)
+    xp270=np.linspace(30,300,270)
     data = Data()
     #datos camara semianecoica
     pkSemiFar, qpSemiFar, avgSemiFar, frqSemiFar = data.SemiFarData()

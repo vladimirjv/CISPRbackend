@@ -34,9 +34,18 @@ class CompararPkSemi(Resource):
         val = math.interpolPkSemiFar(frq)
         return {'values': (val).tolist(), 'db': (db-val).tolist()}
 
+class DatosSemiFar(Resource):
+    def get(self):
+        frq=math.xp270
+        pk=math.interpolPkSemiFar(frq)
+        qp=math.interpolQpSemiFar(frq)
+        avg=math.interpolAvgSemiFar(frq)
+        return {'frecuencia':(frq).tolist(),'pk':(pk).tolist(),'qp':(qp).tolist(),'avg':(avg).tolist()}
+
 api.add_resource(HelloWorld, '/hello')
 api.add_resource(TestArray,'/test')
 api.add_resource(CompararPkSemi, '/compararpksemi')
+api.add_resource(DatosSemiFar, '/datasf')
 
 if __name__ == '__main__':
     app.run(debug=True)
