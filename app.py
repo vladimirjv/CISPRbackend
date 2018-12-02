@@ -1,12 +1,13 @@
+import json
 from flask import Flask, request
 from flask_restful import Resource, Api
-import json
-from calculation import EvaluarBS
+from CalculationCl import MyMath
+import numpy as np
+# from calculation import Test
+math=MyMath()
 
 app = Flask(__name__)
 api = Api(app)
-
-lista=[]
 
 @app.route('/')
 def hello_world():
@@ -18,23 +19,24 @@ class HelloWorld(Resource):
 
 class TestArray(Resource):
     def put(self):
-        data=request.form['list']
-        lista=json.loads(data)
-        #with requests from python
-        # put('http://127.0.0.1:5000/test', data={'list': '[23,23,1243]'}).json()
-        return { 'valores':lista }
+        frq = np.array(json.loads(request.form['frecuencia']))
+        db = np.array(json.loads(request.form['db']))
+        val=math.interpolPkSemiFar(frq)
+        return {'values': (val).tolist(), 'db': (db-val).tolist() }
+    def get(self):
+        frq=[]
+        return { 'valores': frq }
 
-class Compensar(Resource):
+class CompararPkSemi(Resource):
     def put(self):
-        frq=json.loads(request.form['frecuencia'])
-        # pk=json.loads(request.form['pk'])
-        compensacion=EvaluarBS(frq)
-        return {'compensacion' : compensacion }
-
+        frq = np.array(json.loads(request.form['frecuencia']))
+        db = np.array(json.loads(request.form['db']))
+        val = math.interpolPkSemiFar(frq)
+        return {'values': (val).tolist(), 'db': (db-val).tolist()}
 
 api.add_resource(HelloWorld, '/hello')
 api.add_resource(TestArray,'/test')
-api.add_resource(Compensar, '/compensacion')
+api.add_resource(CompararPkSemi, '/compararpksemi')
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

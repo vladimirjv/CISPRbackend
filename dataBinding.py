@@ -5,6 +5,8 @@ import pandas as pd
 # camaraSemiClose = pd.read_csv("SemiClose.csv", delimiter=',')
 # camaraSemiMiddle = pd.read_csv("SemiMiddle.csv", delimiter=',')
 # camaraBlindFar = pd.read_csv("SemiFar.csv", delimiter=',')
+
+
 class Data():
     '''
     Todos los datos están medidos en dBuV
@@ -21,6 +23,7 @@ class Data():
     camaraBlindFar = pd.read_csv("data/SemiFar.csv", delimiter=',')
     ##Camara semianecoica
     #Far
+
     def SemiFarData(self):
         '''
         return Peak, Quasi-Peak, Average, Frequncy
@@ -29,8 +32,9 @@ class Data():
         qpSemiFar = (self.camaraSemiFar['QPD AMPL']).values
         avgSemiFar = (self.camaraSemiFar['EAVG AMPL']).values
         frqSemiFar = (self.camaraSemiFar['FREQ']/1000000).values
-        return pkSemiFar,qpSemiFar,avgSemiFar,frqSemiFar
+        return pkSemiFar, qpSemiFar, avgSemiFar, frqSemiFar
     #Middle
+
     def SemiMiddleData(self):
         '''
         return Peak, Quasi-Peak, Average, Frequncy
@@ -39,8 +43,9 @@ class Data():
         qpSemiMiddle = (self.camaraSemiMiddle['QPD AMPL']).values
         avgSemiMiddle = (self.camaraSemiMiddle['EAVG AMPL']).values
         frqSemiMiddle = (self.camaraSemiMiddle['FREQ']/1000000).values
-        return pkSemiMiddle,qpSemiMiddle,avgSemiMiddle,frqSemiMiddle
+        return pkSemiMiddle, qpSemiMiddle, avgSemiMiddle, frqSemiMiddle
     #Close
+
     def SemiCloseData(self):
         '''
         return Peak, Quasi-Peak, Average, Frequncy
@@ -49,7 +54,7 @@ class Data():
         qpSemiClose = (self.camaraSemiClose['QPD AMPL']).values
         avgSemiClose = (self.camaraSemiClose['EAVG AMPL']).values
         frqSemiClose = (self.camaraSemiClose['FREQ']/1000000).values
-        return pkSemiClose,qpSemiClose,avgSemiClose,frqSemiClose
+        return pkSemiClose, qpSemiClose, avgSemiClose, frqSemiClose
 
     ##Camara bindada
     #Far
@@ -61,6 +66,6 @@ class Data():
         qpBlindFar = (self.camaraBlindFar['QPD AMPL']).values
         avgBlindFar = (self.camaraBlindFar['EAVG AMPL']).values
         frqBlindFar = (self.camaraBlindFar['FREQ']/1000000).values
-        return pkBlindFar,qpBlindFar,avgBlindFar,frqBlindFar
+        return pkBlindFar, qpBlindFar, avgBlindFar, frqBlindFar
     #Middle
     #Close
