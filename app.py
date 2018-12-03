@@ -21,10 +21,12 @@ class HelloWorld(Resource):
 
 class TestArray(Resource):
     def put(self):
-        frq = np.array(json.loads(request.form['frecuencia']))
-        db = np.array(json.loads(request.form['db']))
-        val=math.interpolPkSemiFar(frq)
-        return {'values': (val).tolist(), 'db': (db-val).tolist() }
+        lista=json.loads(request.form['lista'])
+        # frq = np.array(json.loads(request.form['frecuencia']))
+        # db = np.array(json.loads(request.form['db']))
+        # val=math.interpolPkSemiFar(frq)
+        # return {'values': (val).tolist(), 'db': (db-val).tolist() }
+        return {'lista':lista}
     def get(self):
         frq=[]
         return { 'valores': frq }
