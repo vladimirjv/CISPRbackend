@@ -46,13 +46,12 @@ class CompararPkSemi(Resource):
         db = args['db']
         frq = list(map(int, frq.split(",")))
         pk = list(map(int, db.split(",")))
-        # frqA=np.array([30,45,80,180])
         frqA=np.array(frq)
         pkA=np.array(pk)
         val=math.interpolPkSemiFar(frqA)
-        # val = (val).tolist()}
-        # return {'status': 'ok'}
-        return {'frecuencia': frq, 'pk': pk, 'realPk': (val).tolist()}
+        diff=pkA-val
+        mape = np.mean(np.abs((val - pkA) / val)) * 100
+        return {'frecuencia': frq, 'pk': pk, 'realPk': (val).tolist(),'diff':(diff).tolist(),'mape':mape}
     def get(self):
         frq=self.frq
         pk=self.pk

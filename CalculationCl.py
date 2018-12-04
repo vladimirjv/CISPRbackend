@@ -30,3 +30,4 @@ class MyMath():
     interpolPkBlindFar = interp1d(frqBlindFar, pkBlindFar)
     interpolQpBlindFar = interp1d(frqBlindFar, qpBlindFar)
     interpolAvgBlindFar = interp1d(frqBlindFar, avgBlindFar)
+
