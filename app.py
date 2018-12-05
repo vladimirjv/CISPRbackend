@@ -15,6 +15,7 @@ api = Api(app)
 parser = reqparse.RequestParser()
 parser.add_argument('lista')
 parser.add_argument('db')
+parser.add_argument('type')
 
 
 @app.route('/')
@@ -44,14 +45,21 @@ class CompararPkSemi(Resource):
         args = parser.parse_args()
         frq = args['lista']
         db = args['db']
+        typeQuery = args['type']
         frq = list(map(int, frq.split(",")))
         pk = list(map(int, db.split(",")))
         frqA=np.array(frq)
         pkA=np.array(pk)
-        val=math.interpolPkSemiFar(frqA)
+        val= []
+        if typeQuery=="SF":
+            val=math.interpolPkSemiFar(frqA)
+        if typeQuery =="SM":
+            val = math.interpolPkSemiMiddle(frqA)
+        if typeQuery == "SC":
+            val = math.interpolPkSemiClose(frqA)
         diff=pkA-val
         mape = np.mean(np.abs((val - pkA) / val)) * 100
-        return {'frecuencia': frq, 'pk': pk, 'realPk': (val).tolist(),'diff':(diff).tolist(),'mape':mape}
+        return {'frecuencia': frq, 'pk': pk, 'realPk': (val).tolist(),'diff':(diff).tolist(),'mape':mape, 'type':typeQuery}
     def get(self):
         frq=self.frq
         pk=self.pk
