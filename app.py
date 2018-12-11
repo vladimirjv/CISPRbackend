@@ -46,8 +46,8 @@ class CompararPkSemi(Resource):
         frq = args['lista']
         db = args['db']
         typeQuery = args['type']
-        frq = list(map(int, frq.split(",")))
-        pk = list(map(int, db.split(",")))
+        frq = list(map(float, frq.split(",")))
+        pk = list(map(float, db.split(",")))
         frqA=np.array(frq)
         pkA=np.array(pk)
         val= []
@@ -57,8 +57,10 @@ class CompararPkSemi(Resource):
             val = math.interpolPkSemiMiddle(frqA)
         if typeQuery == "SC":
             val = math.interpolPkSemiClose(frqA)
-        diff=pkA-val
-        mape = np.mean(np.abs((val - pkA) / val)) * 100
+        # val=np.around(val)
+        diff=np.around((pkA-val),2)
+        mape = np.around((np.mean(np.abs((val - pkA) / val)) * 100),2)
+        val=np.around(val,2)
         return {'frecuencia': frq, 'pk': pk, 'realPk': (val).tolist(),'diff':(diff).tolist(),'mape':mape, 'type':typeQuery}
     def get(self):
         frq=self.frq
@@ -67,10 +69,10 @@ class CompararPkSemi(Resource):
 
 class DatosSemiFar(Resource):
     def get(self):
-        frq=math.xp270
-        pk=math.interpolPkSemiFar(frq)
-        qp=math.interpolQpSemiFar(frq)
-        avg=math.interpolAvgSemiFar(frq)
+        frq=np.around(math.xp270)
+        pk = math.interpolPkSemiFar(frq)
+        qp = np.around(math.interpolQpSemiFar(frq),2)
+        avg = np.around(math.interpolAvgSemiFar(frq),2)
         return {'frecuencia':(frq).tolist(),'pk':(pk).tolist(),'qp':(qp).tolist(),'avg':(avg).tolist()}
 
 api.add_resource(HelloWorld, '/hello')
