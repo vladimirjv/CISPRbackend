@@ -57,7 +57,12 @@ class CompararPkSemi(Resource):
             val = math.interpolPkSemiMiddle(frqA)
         if typeQuery == "SC":
             val = math.interpolPkSemiClose(frqA)
-        # val=np.around(val)
+        if typeQuery == "BF":
+            val = math.interpolPkBlindFar(frqA)
+        if typeQuery == "BM":
+            val = math.interpolPkBlindFar(frqA)
+        if typeQuery == "BC":
+            val = math.interpolPkBlindFar(frqA)
         diff=np.around((pkA-val),2)
         mape = np.around((np.mean(np.abs((val - pkA) / val)) * 100),2)
         val=np.around(val,2)
